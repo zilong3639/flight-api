@@ -1,0 +1,38 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: fight-api
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://liugang-flightdb.cj6gcogsidzt.ap-southeast-2.rds.amazonaws.com:3306/flight?useSSL=false&serverTimezone=Asia/Shanghai
+    username: admin
+    password: zaq12wsx
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 30000
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        jdbc:
+          batch_size: 30
+          order_inserts: true
+    open-in-view: false
+
+  sql:
+    init:
+      mode: never
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
