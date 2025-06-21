@@ -1,21 +1,10 @@
 package com.example.flightapi.service;
 
-import com.example.flightapi.dto.AirportDTO;
-import com.example.flightapi.dto.AjaxResult;
-import com.example.flightapi.repository.AirportRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.example.flightapi.controller.dto.AirportResponseDto;
 
+import java.util.List;
 
-@Service
-public class AirportService {
-
-    @Autowired
-    private AirportRepository airportRepository;
-
-    public AjaxResult findAll() {
-        AirportDTO airportDTO = new AirportDTO();
-        airportDTO.setAirports(airportRepository.findAll());
-        return AjaxResult.success(airportDTO);
-    }
+public interface AirportService {
+  List<AirportResponseDto> getAllAirports() throws Exception;
+  List<AirportResponseDto> getAirportsByCity(String city) throws Exception;
 }
